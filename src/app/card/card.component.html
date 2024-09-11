@@ -1,0 +1,16 @@
+<div class="card" style="width: 18rem;">
+  <span [class]="product.stock==0?'badge text-bg-danger':'badge text-bg-success'" style="width: 90px;height: 20px;position: absolute;">
+    {{product.stock==0?'Out of Stock':'In Stock'}}
+  </span>
+    <img [src]="product.images" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{product.title}}<p>{{product.price}} $</p></h5>
+      <app-rate [rating]="product.rating"></app-rate>
+       <p class="card-text">{{product.description}}</p>
+    </div>
+    <div class="card-body">
+      <button (click)="navigateToDetails(product.id)" class="btn btn-success" style="border-radius: 30px">More Details</button>
+      <button (click)="adding()" class="btn btn-success" style="border-radius: 30px">Add to cart</button>
+
+    </div>
+  </div>

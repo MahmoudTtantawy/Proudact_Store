@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-header text-center">
+          <h3 class="mb-0">Login</h3>
+        </div>
+        <div class="card-body">
+          <form #loginform="ngForm" (ngSubmit)="submit(loginform)" >
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" [(ngModel)]="data.email" required #email="ngModel" pattern="[a-zA-Z0-9.*%±]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}">
+              @if(loginform.invalid && (loginform.touched||submitted)){
+                  @if(loginform.controls['email'].errors?.['required']){<p class="alert alert-danger">Email is required</p>
+                  }
+                  @if(loginform.controls['email'].errors?.['pattern']){
+                    <p class="alert alert-danger">Email is invalid</p>
+                  }
+              }
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" [(ngModel)]="data.password" required #password="ngModel">
+              @if(loginform.invalid && (loginform.touched||submitted)){
+                  @if(loginform.controls['password'].errors?.['required']){
+                    <p class="alert alert-danger">Password is required</p>
+                  }
+                  @if(loginform.controls['password'].errors?.['minlength']){
+                    <p class="alert alert-danger">Password must be at least 8 characters</p>
+                  }
+              }
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-dark btn-block">Login</button>
+            </div>
+            <div class="text-center mt-3">
+              <a href="/register" class="text-decoration-none">Register as a new user</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
